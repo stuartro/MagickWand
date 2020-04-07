@@ -64,7 +64,7 @@ public var version: String {
 }
     
 internal func getString(from wandPointer: OpaquePointer?,
-                               using method: (OpaquePointer!) -> (UnsafeMutablePointer<Int8>!)) -> String? {
+                               using method: (OpaquePointer?) -> (UnsafeMutablePointer<Int8>?)) -> String? {
     guard let pointer = method(wandPointer) else {
         return nil
     }

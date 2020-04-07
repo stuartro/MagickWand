@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 
 import PackageDescription
 
@@ -8,8 +8,18 @@ let package = Package(
         .library(name: "MagickWand", targets: ["MagickWand"])
     ],
     targets: [
-        .target(name: "CMagickWand", dependencies: []),
-        .target(name: "MagickWand", dependencies: ["CMagickWand"]),
+        .systemLibrary(
+            name: "CMagickWand",
+            pkgConfig: "MagickWand-6.Q16",
+            providers: [
+                .brew(["imagemagick@6"]),
+                .apt(["libmagickwand-6.q16-dev"])
+            ]
+        ),
+        .target(
+            name: "MagickWand",
+            dependencies: ["CMagickWand"]
+        ),
         .testTarget(
             name: "MagickWandTests",
             dependencies: ["MagickWand"]
