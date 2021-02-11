@@ -8,6 +8,6 @@
 #ifndef CMAGICKWAND_SWIFT
 #define CMAGICKWAND_SWIFT
 
-#include <MagickWand/MagickWand.h>
+#include <wand/MagickWand.h>
 
 #endif /* shim_h */
